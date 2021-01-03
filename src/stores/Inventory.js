@@ -4,26 +4,40 @@ import { Item } from './Item'
 
 export class Inventory {
     constructor() {
-        this.list = []
+        this.list = [{name: 'phone', price: 100, quantity: 7}]
 
         makeObservable(this, {
             list: observable,
             addItem: action,
-            changePrice: action, 
+            changePrice: action,
             buyItem: action
         })
     }
- 
-    addItem = (newItem) => {
-        let newI = new Item(newItem)
-        this.list.push(newI)
+
+    addItem = (name, price = 0, quantity = 1) => {
+        if (this.list.some(obj => obj.name === name)) {
+            let itemToChange = this.list.find(i => i.name === name)
+            console.log(itemToChange);
+            itemToChange.price = price
+            itemToChange.quantity++
+        } else {
+            let newI = new Item(name, price, quantity)
+            this.list.push(newI)
+        }
     }
     changePrice = (name, newPrice) => {
         let item = this.list.find(i => i.name === name)
         item.price = newPrice
     }
-    buyItem = () => {
-        
+    buyItem = (name) => {
+        let relevantItem = this.list.find(i => i.name === name)
+        let index = this.list.indexOf(name)
+        if (relevantItem.quantity===1){
+            this.list.splice(index, 1)
+        } else {
+        relevantItem.quantity--
+        }
+
     }
 }
 
