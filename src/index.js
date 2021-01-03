@@ -4,9 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+import { Item } from '../src/stores/Item'
+import { Inventory} from '../src/stores/Inventory'
+
+let inventory = new Inventory()
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App inventory={inventory} />
   </React.StrictMode>,
   document.getElementById('root')
 );
