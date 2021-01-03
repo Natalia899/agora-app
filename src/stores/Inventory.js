@@ -21,6 +21,7 @@ export class Inventory {
             itemToChange.price = price
             itemToChange.quantity++
         } else {
+            console.log('gjjgccf');
             let newI = new Item(name, price, quantity)
             this.list.push(newI)
         }
