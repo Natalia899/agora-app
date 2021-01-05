@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { inject, observer } from 'mobx-react'
+import React from 'react'
+import { observer } from 'mobx-react'
 
 
 const Item = observer((props) => {
-    console.log(props);
-
     const buyItem = () => {
         props.inventory.buyItem(props.item.name)
     }
@@ -17,15 +15,11 @@ const Item = observer((props) => {
     }
     return (
         <div>
-
             <div onDoubleClick={changePrice}>
-                {props.item.quantity} {props.item.name} available at {props.item.price}$ per item.
-</div>
-            <button onClick={buyItem}>Buy item</button>
-
-
+                <li className='item'> {props.item.quantity} {props.item.name} available at {props.item.price}$ per item   .
+                <i onClick={buyItem} class="tiny material-icons"> add_shopping_cart</i> </li>
+            </div>
         </div>
-
     )
 })
 
