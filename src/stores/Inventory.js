@@ -1,4 +1,4 @@
-import { observable, action, makeObservable } from 'mobx'
+import { observable, computed, action, makeObservable } from 'mobx'
 import { Item } from './Item'
 
 
@@ -10,7 +10,8 @@ export class Inventory {
             list: observable,
             addItem: action,
             changePrice: action,
-            buyItem: action
+            buyItem: action,
+            numItems: computed
         })
     }
 
@@ -39,6 +40,12 @@ export class Inventory {
         relevantItem.quantity--
         }
 
+        
+    }
+    get numItems (){
+        let total = 0
+        this.list.forEach(r => total += r.quantity)
+        return total
     }
 }
 
