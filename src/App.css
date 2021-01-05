@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(233, 236, 239);
+  font-family: 'Work Sans', sans-serif;
+  color: rgb(51, 65, 92);
+}
+
+.main-container {
+  margin-left: 20%;
+  margin-top: 5%;
+}
