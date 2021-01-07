@@ -17,7 +17,7 @@ export class Inventory {
 
     addItem = (name, price = 0, quantity = 1) => {
         if (this.list.some(obj => obj.name === name)) {
-            let itemToChange = this.list.find(i => i.name === name)
+            const itemToChange = this.list.find(i => i.name === name)
             itemToChange.price = price
             itemToChange.quantity++
         } else {
